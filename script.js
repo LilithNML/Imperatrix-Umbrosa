@@ -3,7 +3,7 @@ const mensajes = {
   "teamo": "No hay un solo día en que no te ame más que el anterior.",
   "cancion": {
     texto: "Nuestra canción favorita siempre me hace pensar en ti.",
-    video: "https://www.youtube.com/embed/kXYiU_JCYtU"
+    video: "https://www.youtube.com/watch?v=kXYiU_JCYtU"
   },
   "abrazo": "Tus abrazos son el hogar donde siempre quiero volver.",
   "destino": "Eras mi destino incluso antes de conocerte."
@@ -14,10 +14,6 @@ function checkCode() {
   const code = input.value.trim().toLowerCase();
   const contenido = document.getElementById("contenido");
 
-  // Reproducir sonido de código correcto
-  const correctSound = document.getElementById("correctSound");
-  const incorrectSound = document.getElementById("incorrectSound");
-
   if (mensajes.hasOwnProperty(code)) {
     const data = mensajes[code];
     let html = '';
@@ -25,27 +21,17 @@ function checkCode() {
     if (typeof data === 'string') {
       html = `<p>${data}</p>`;
     } else if (typeof data === 'object') {
-      html = `<p>${data.texto}</p><br><iframe width="100%" height="315" src="${data.video}" frameborder="0" allowfullscreen></iframe>`;
+      html = `<p>${data.texto}</p>`;
+      window.open(data.video, "_blank");
     }
 
     contenido.innerHTML = html;
     contenido.classList.add("show");
-
-    // Reproducir sonido de éxito
-    correctSound.play();
+    contenido.scrollIntoView({ behavior: "smooth" });
   } else {
     contenido.innerHTML = "<p style='color: red;'>Código no válido. Intenta con otro.</p>";
     contenido.classList.add("show");
-
-    // Reproducir sonido de error
-    incorrectSound.play();
   }
 
   input.value = "";
 }
-window.addEventListener("click", () => {
-  const music = document.getElementById("bgMusic");
-  if (music.paused) {
-    music.play().catch(() => {});
-  }
-}, { once: true });
