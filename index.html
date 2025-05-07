@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Secretos para Mi Amor</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    @font-face {
+      font-family: 'Courgette';
+      src: url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+    }
+  </style>
+</head>
+<body>
+  <!-- Capa de superposición con filtro para la imagen de fondo -->
+  <div class="background-overlay"></div>
+
+  <div class="container">
+    <img src="decoracion.png" alt="Decoración romántica" class="header-img"/>
+    <h1>Descubre un Mensaje Secreto</h1>
+    <input type="text" id="codeInput" placeholder="Ingresa tu código..." />
+    <br/>
+    <button onclick="checkCode()">Desbloquear</button>
+    <div id="contenido" class="contenido"></div>
+  </div>
+
+  <audio id="correctSound" src="correct.mp3" preload="auto"></audio>
+  <audio id="incorrectSound" src="incorrect.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
