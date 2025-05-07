@@ -25,8 +25,7 @@ function checkCode() {
     if (typeof data === 'string') {
       html = `<p>${data}</p>`;
     } else if (typeof data === 'object') {
-      html = `<p>${data.texto}</p><br><p><a href="${data.video}" target="_blank" rel="noopener noreferrer">Haz clic aquí para ver el video en YouTube</a></p>`;
-window.open(data.video, "_blank");
+      html = `<p>${data.texto}</p><br><iframe width="100%" height="315" src="${data.video}" frameborder="0" allowfullscreen></iframe>`;
     }
 
     contenido.innerHTML = html;
