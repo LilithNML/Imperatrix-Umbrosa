@@ -25,7 +25,12 @@ function checkCode() {
     if (typeof data === 'string') {
       html = `<p>${data}</p>`;
     } else if (typeof data === 'object') {
-      html = `<p>${data.texto}</p><br><iframe width="100%" height="315" src="${data.video}" frameborder="0" allowfullscreen></iframe>`;
+  html = `<p>${data.texto}</p><p style="color:#9A8C8B;">(Video abierto en una nueva pestaña)</p>`;
+  
+  setTimeout(() => {
+    const videoUrl = data.video.replace("embed/", "watch?v=");
+    window.open(videoUrl, '_blank');
+  }, 100); // ligero retraso para evitar bloqueos de popup
     }
 
     contenido.innerHTML = html;
