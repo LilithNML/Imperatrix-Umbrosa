@@ -11,8 +11,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  overflow-y: auto;
+  height: 100vh;
+  overflow: hidden;
   position: relative;
   color: #CDD8D5; /* Ajuste de color de texto */
 }
@@ -34,7 +34,7 @@ body {
   padding: 40px;
   border-radius: 25px;
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
-  max-width: none;
+  max-width: 600px;
   text-align: center;
   animation: fadeIn 1.5s ease-in;
 }
