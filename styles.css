@@ -1,103 +1,144 @@
-/* Estilo general */
+/* Fuente romántica */
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+/* Fondo con imagen mágica */
 body {
-  font-family: 'Georgia', serif;
-  background-image: url('fondo-principal.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  font-family: 'Courgette', cursive;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  background: url('fondo-romantico.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   overflow-y: auto;
-  height: 100vh;
-  color: #CDD8D5;
+  position: relative;
+  color: #CDD8D5; /* Ajuste de color de texto */
 }
 
-/* Contenedor principal */
+/* Filtro de niebla romántica */
+.background-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(32, 30, 43, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 0;
+}
+
 .container {
-  background-color: rgba(16, 7, 17, 0.85);
-  max-width: 700px;
-  margin: 60px auto;
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-  text-align: center;
   position: relative;
   z-index: 1;
+  background-color: rgba(32, 30, 43, 0.85);
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+  max-width: none;
+  text-align: center;
+  animation: fadeIn 1.5s ease-in;
 }
 
-/* Imagen decorativa */
-.decoracion-img {
-  max-width: 100%;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  opacity: 0.95;
+/* Imagen decorativa superior */
+.header-img {
+  width: 80px;
+  margin-bottom: 15px;
+  animation: float 3s ease-in-out infinite;
 }
 
-/* Título */
 h1 {
-  font-size: 36px;
   color: #BCBDB9;
-  margin-bottom: 20px;
-  letter-spacing: 2px;
+  font-size: 2.4rem;
+  margin-bottom: 25px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Entrada */
 input {
   padding: 12px;
-  font-size: 18px;
-  border-radius: 10px;
-  border: 2px solid #6B5D74;
   width: 80%;
-  background-color: #242642;
+  font-size: 18px;
+  border-radius: 12px;
+  border: 2px solid #8E7383;
+  outline: none;
+  background-color: #6B5D74;
   color: #CDD8D5;
   text-transform: lowercase;
-  outline: none;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-/* Botón */
 button {
-  padding: 12px 25px;
-  background-color: #8E7383;
-  border: none;
-  color: #fff;
+  padding: 12px 28px;
+  background-color: #9A8C8B;
+  color: white;
   font-size: 18px;
+  border: none;
   border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #6B5D74;
-  transform: translateY(-2px);
+  background-color: #3F3938;
+  transform: scale(1.05);
 }
 
 button:active {
-  transform: translateY(1px);
+  transform: scale(0.98);
 }
 
-/* Contenido desbloqueado */
-#contenido {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: rgba(1, 1, 7, 0.75);
+.contenido {
+  margin-top: 25px;
+  padding: 25px;
+  background-color: #1E2021;
   border-radius: 15px;
+  border: 1px solid #272626;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: none;
+  color: #AEA5A5;
   font-size: 18px;
   line-height: 1.7;
-  color: #BCBDB9;
-  display: none;
-  max-height: 70vh;
-  overflow-y: auto;
 }
 
-#contenido.show {
+.contenido.show {
   display: block;
   animation: fadeIn 1s ease-in-out;
 }
 
-/* Animación */
+iframe {
+  width: 100%;
+  height: 315px;
+  margin-top: 15px;
+  border-radius: 12px;
+  border: none;
+}
+
+/* Animaciones */
 @keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Responsividad */
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 30px 20px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  input, button {
+    font-size: 16px;
+  }
+
+  iframe {
+    height: 200px;
+  }
 }
