@@ -3,32 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Para Alan</title>
+  <title>Haziel</title>
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    @font-face {
-      font-family: 'Courgette';
-      src: url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
-    }
-  </style>
 </head>
 <body>
-  <!-- Capa de superposición con filtro para la imagen de fondo -->
-  <div class="background-overlay"></div>
+  <!-- Música de fondo -->
+  <audio id="bgMusic" src="musica-fondo.mp3" autoplay loop preload="auto"></audio>
 
   <div class="container">
-    <img src="decoracion.png" alt="Decoración romántica" class="header-img"/>
+    <img src="decoracion-superior.png" alt="Decoración" class="decoracion-img" />
     <h1>Descubre un Mensaje Secreto</h1>
     <input type="text" id="codeInput" placeholder="Ingresa tu código..." />
     <br/>
     <button onclick="checkCode()">Desbloquear</button>
-    <div id="contenido" class="contenido"></div>
+    <div id="contenido"></div>
   </div>
 
-  <audio id="correctSound" src="correct.mp3" preload="auto"></audio>
-  <audio id="incorrectSound" src="incorrect.mp3" preload="auto"></audio>
-
   <script src="script.js"></script>
-  <audio id="bgMusic" src="musica-fondo.mp3" loop preload="auto"></audio>
 </body>
 </html>
