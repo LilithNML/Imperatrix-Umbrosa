@@ -43,3 +43,9 @@ function checkCode() {
 
   input.value = "";
 }
+window.addEventListener("click", () => {
+  const music = document.getElementById("bgMusic");
+  if (music.paused) {
+    music.play().catch(() => {});
+  }
+}, { once: true });
