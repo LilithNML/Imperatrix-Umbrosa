@@ -12,44 +12,58 @@ const mensajes = {
 function checkCode() {
   const input = document.getElementById("codeInput");
   const code = input.value.trim().toLowerCase();
+  const contenido = document.getElementById("contenido");
   const correctSound = document.getElementById("correctSound");
   const incorrectSound = document.getElementById("incorrectSound");
 
-  const modal = document.getElementById("modal");
-  const modalMensaje = document.getElementById("modalMensaje");
-
   if (mensajes.hasOwnProperty(code)) {
-    const data = mensajes[code];
-    let html = "";
+    let desbloqueados = JSON.parse(localStorage.getItem("desbloqueados") || "[]");
 
-    if (typeof data === "string") {
-      html = `<p>${data}</p>`;
-    } else if (typeof data === "object") {
-      html = `<p>${data.texto}</p><p style="color:#9A8C8B;">(Video abierto en otra pestaña)</p>`;
-      setTimeout(() => {
-        const videoUrl = data.video.replace("embed/", "watch?v=");
-        window.open(videoUrl, "_blank");
-      }, 100);
+    if (!desbloqueados.includes(code)) {
+      desbloqueados.push(code);
+      localStorage.setItem("desbloqueados", JSON.stringify(desbloqueados));
     }
 
-    modalMensaje.innerHTML = html;
-    modal.style.display = "flex";
+    const data = mensajes[code];
+    let html = '';
+
+    if (typeof data === 'string') {
+      html = `<p>${data}</p>`;
+    } else if (typeof data === 'object') {
+      html = `<p>${data.texto}</p><br><iframe width="100%" height="315" src="${data.video}" frameborder="0" allowfullscreen></iframe>`;
+    }
+
+    contenido.innerHTML = html;
+    contenido.classList.add("show");
     correctSound.play();
   } else {
-    modalMensaje.innerHTML = `<p style='color: red;'>Código no válido. Intenta con otro.</p>`;
-    modal.style.display = "flex";
+    contenido.innerHTML = "<p style='color: red;'>Código no válido. Intenta con otro.</p>";
+    contenido.classList.add("show");
     incorrectSound.play();
   }
 
   input.value = "";
+  actualizarProgreso();
 }
 
-function cerrarModal() {
-  const modal = document.getElementById("modal");
-  modal.style.display = "none";
+function actualizarProgreso() {
+  const total = Object.keys(mensajes).length;
+  const desbloqueados = JSON.parse(localStorage.getItem("desbloqueados") || "[]");
+  const progreso = document.getElementById("progreso");
+  const lista = document.getElementById("listaCodigos");
+
+  progreso.textContent = `Has desbloqueado ${desbloqueados.length} de ${total} mensajes.`;
+
+  lista.innerHTML = "";
+  desbloqueados.forEach(code => {
+    const li = document.createElement("li");
+    li.textContent = code;
+    lista.appendChild(li);
+  });
 }
-  input.value = "";
-}
+
+window.addEventListener("load", actualizarProgreso);
+
 window.addEventListener("click", () => {
   const music = document.getElementById("bgMusic");
   if (music.paused) {
