@@ -30,7 +30,8 @@ function checkCode() {
     if (typeof data === 'string') {
       html = `<p>${data}</p>`;
     } else if (typeof data === 'object') {
-      html = `<p>${data.texto}</p><br><iframe width="100%" height="315" src="${data.video}" frameborder="0" allowfullscreen></iframe>`;
+      html = `<p>${data.texto}</p>`;
+      window.open(data.video, "_blank"); // Abre el video en nueva pestaña
     }
 
     contenido.innerHTML = html;
