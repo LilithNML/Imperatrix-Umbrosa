@@ -37,11 +37,11 @@ function checkCode() {
     contenido.innerHTML = html;
     contenido.classList.add("show");
     correctSound.play();
+    lanzarCorazones();
   } else {
     contenido.innerHTML = "<p style='color: red;'>Código no válido. Intenta con otro.</p>";
     contenido.classList.add("show");
     incorrectSound.play();
-    lanzarCorazones();
   }
 
   input.value = "";
@@ -68,15 +68,22 @@ window.addEventListener("click", () => {
 function lanzarCorazones() {
   const container = document.getElementById("hearts-container");
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 12; i++) {
     const heart = document.createElement("div");
     heart.classList.add("heart");
+
+    const size = Math.random() * 20 + 20; // entre 20px y 40px
+    heart.style.width = `${size}px`;
+    heart.style.height = `${size}px`;
+
     heart.style.left = `${Math.random() * 100}%`;
-    heart.style.top = "100%";
+    heart.style.animationDuration = `${2.5 + Math.random() * 1.5}s`; // 2.5 a 4s
+    heart.style.transform = `rotate(${Math.random() * 360}deg)`;
+
     container.appendChild(heart);
 
     setTimeout(() => {
       heart.remove();
-    }, 3000);
+    }, 4000);
   }
 }
