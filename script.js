@@ -1,5 +1,5 @@
 const mensajes = {
-  "amanecer": "Cada amanecer contigo es un regalo que jamás imaginé merecer.",
+  "0011": "Cada amanecer contigo es un regalo que jamás imaginé merecer.",
   "teamo": "No hay un solo día en que no te ame más que el anterior.",
   "cancion": {
     texto: "Nuestra canción favorita siempre me hace pensar en ti.",
