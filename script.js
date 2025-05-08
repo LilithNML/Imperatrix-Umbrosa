@@ -63,3 +63,19 @@ window.addEventListener("click", () => {
     music.play().catch(() => {});
   }
 }, { once: true });
+
+function lanzarCorazones() {
+  const container = document.getElementById("hearts-container");
+
+  for (let i = 0; i < 10; i++) {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.style.left = `${Math.random() * 100}%`;
+    heart.style.top = "100%";
+    container.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 3000);
+  }
+}
