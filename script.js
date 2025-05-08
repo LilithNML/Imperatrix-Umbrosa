@@ -50,16 +50,8 @@ function actualizarProgreso() {
   const total = Object.keys(mensajes).length;
   const desbloqueados = JSON.parse(localStorage.getItem("desbloqueados") || "[]");
   const progreso = document.getElementById("progreso");
-  const lista = document.getElementById("listaCodigos");
 
-  progreso.textContent = `Has desbloqueado ${desbloqueados.length} de ${total} mensajes.`;
-
-  lista.innerHTML = "";
-  desbloqueados.forEach(code => {
-    const li = document.createElement("li");
-    li.textContent = code;
-    lista.appendChild(li);
-  });
+  progreso.textContent = `Has desbloqueado ${desbloqueados.length} de ${total} mensajes secretos.`;
 }
 
 window.addEventListener("load", actualizarProgreso);
