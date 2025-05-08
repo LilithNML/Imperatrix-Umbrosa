@@ -41,6 +41,7 @@ function checkCode() {
     contenido.innerHTML = "<p style='color: red;'>Código no válido. Intenta con otro.</p>";
     contenido.classList.add("show");
     incorrectSound.play();
+    lanzarCorazones();
   }
 
   input.value = "";
