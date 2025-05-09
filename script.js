@@ -16,7 +16,7 @@ Nunca imaginé que un juego de fantasía me llevaría al mejor encuentro de mi v
 Gracias por aparecer en mi mundo como un regalo inesperado. Gracias por quedarte.
 
 Con todo mi amor,  
-Lilith`
+Lilith'
 };
 
 function checkCode() {
