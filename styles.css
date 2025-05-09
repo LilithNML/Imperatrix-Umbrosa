@@ -159,33 +159,3 @@ iframe {
 .lista-codigos li {
   margin-bottom: 5px;
 }
-
-#hearts-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-}
-
-.heart {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: url('corazon.png') no-repeat center;
-  background-size: contain;
-  animation: floatHeart 3s ease-in forwards;
-}
-
-@keyframes floatHeart {
-  0% {
-    transform: translateY(0) scale(1) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100vh) scale(1.8) rotate(360deg);
-    opacity: 0;
-  }
-}
