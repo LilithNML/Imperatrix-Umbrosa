@@ -6,7 +6,17 @@ const mensajes = {
     video: "https://www.youtube.com/embed/kXYiU_JCYtU"
   },
   "abrazo": "Tus abrazos son el hogar donde siempre quiero volver.",
-  "destino": "Eras mi destino incluso antes de conocerte."
+  "destino": "Eras mi destino incluso antes de conocerte.",
+  "9novienbre": `A veces me gusta cerrar los ojos y volver a ese primer momento en que coincidimos en Genshin. No fue casualidad, fue destino disfrazado de juego. Entre combates, misiones y risas, ahí estabas tú, al principio solo un amigo, pero con una energía que poco a poco me fue envolviendo.
+
+Recuerdo cómo nos ayudábamos en el juego, cómo sin darnos cuenta empezamos a hablar más allá de los objetivos del día. No sabía que, tras ese personaje, había alguien que se convertiría en alguien tan especial para mí. Que ese primer saludo se transformaría en tantas conversaciones, cariño, y complicidad.
+
+Nunca imaginé que un juego de fantasía me llevaría al mejor encuentro de mi vida, tú. Y desde entonces, cada día contigo ha sido una aventura más hermosa que cualquier historia dentro del juego.
+
+Gracias por aparecer en mi mundo como un regalo inesperado. Gracias por quedarte.
+
+Con todo mi amor,  
+Lilith`
 };
 
 function checkCode() {
