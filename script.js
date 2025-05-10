@@ -1,49 +1,65 @@
 const mensajes = {
-  "flor": "Eres el amor más bonito que la vida me regaló.",
-  "musica": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-  "regalo": "descargar:archivos/archivo-sorpresa.png"
+  "0011": "Cada amanecer contigo es un regalo que jamás imaginé merecer.",
+  "teamo": "No hay un solo día en que no te ame más que el anterior.",
+  "cancion": {
+    texto: "Nuestra canción favorita siempre me hace pensar en ti.",
+    video: "https://www.youtube.com/embed/kXYiU_JCYtU"
+  },
+  "abrazo": "Tus abrazos son el hogar donde siempre quiero volver.",
+  "destino": "Eras mi destino incluso antes de conocerte."
 };
 
-const inputCodigo = document.getElementById("codigoInput");
-const boton = document.getElementById("botonCodigo");
-const resultado = document.getElementById("resultado");
-const audioCorrecto = new Audio("audio/correcto.mp3");
-const audioIncorrecto = new Audio("audio/incorrecto.mp3");
+function checkCode() {
+  const input = document.getElementById("codeInput");
+  const code = input.value.trim().toLowerCase();
+  const contenido = document.getElementById("contenido");
+  const correctSound = document.getElementById("correctSound");
+  const incorrectSound = document.getElementById("incorrectSound");
 
-function mostrarMensaje(texto) {
-  resultado.textContent = texto;
-  resultado.classList.add("mostrar");
-  setTimeout(() => {
-    resultado.classList.remove("mostrar");
-  }, 4000);
-}
+  if (mensajes.hasOwnProperty(code)) {
+    let desbloqueados = JSON.parse(localStorage.getItem("desbloqueados") || "[]");
 
-boton.addEventListener("click", () => {
-  const clave = inputCodigo.value.trim().toLowerCase();
-
-  if (mensajes[clave]) {
-    audioCorrecto.play();
-    const valor = mensajes[clave];
-
-    if (valor.startsWith("descargar:")) {
-      const archivo = valor.replace("descargar:", "");
-      const enlace = document.createElement("a");
-      enlace.href = archivo;
-      enlace.download = archivo.split("/").pop();
-      document.body.appendChild(enlace);
-      enlace.click();
-      document.body.removeChild(enlace);
-      mostrarMensaje("Descargando archivo sorpresa...");
-    } else if (valor.startsWith("https://")) {
-      window.open(valor, "_blank");
-      mostrarMensaje("Abriendo video en otra pestaña...");
-    } else {
-      mostrarMensaje(valor);
+    if (!desbloqueados.includes(code)) {
+      desbloqueados.push(code);
+      localStorage.setItem("desbloqueados", JSON.stringify(desbloqueados));
     }
+
+    const data = mensajes[code];
+    let html = '';
+
+    if (typeof data === 'string') {
+      html = `<p>${data}</p>`;
+    } else if (typeof data === 'object') {
+      html = `<p>${data.texto}</p>`;
+      window.open(data.video, "_blank"); // Abre el video en nueva pestaña
+    }
+
+    contenido.innerHTML = html;
+    contenido.classList.add("show");
+    correctSound.play();
   } else {
-    audioIncorrecto.play();
-    mostrarMensaje("Código incorrecto. Intenta de nuevo.");
+    contenido.innerHTML = "<p style='color: red;'>Código no válido. Intenta con otro.</p>";
+    contenido.classList.add("show");
+    incorrectSound.play();
   }
 
-  inputCodigo.value = "";
-});
+  input.value = "";
+  actualizarProgreso();
+}
+
+function actualizarProgreso() {
+  const total = Object.keys(mensajes).length;
+  const desbloqueados = JSON.parse(localStorage.getItem("desbloqueados") || "[]");
+  const progreso = document.getElementById("progreso");
+
+  progreso.textContent = `Has desbloqueado ${desbloqueados.length} de ${total} mensajes secretos.`;
+}
+
+window.addEventListener("load", actualizarProgreso);
+
+window.addEventListener("click", () => {
+  const music = document.getElementById("bgMusic");
+  if (music.paused) {
+    music.play().catch(() => {});
+  }
+}, { once: true });
