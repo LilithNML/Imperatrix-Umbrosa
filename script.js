@@ -9,11 +9,11 @@ const mensajes = {
   "destino": "Eras mi destino incluso antes de conocerte.",
   "regalo": {
     texto: "Aquí tienes un regalo especial, solo para ti.",
-    archivo: "regalo.pdf"
+    archivo: "archivo-sorpresa.png"
   },
   "sorpresa": {
     texto: "Haz clic en el enlace para ver tu sorpresa...",
-    link: "https://example.com/sorpresa.html"
+    link: "https://es.m.wikipedia.org/wiki/Lilit"
   }
 };
 
