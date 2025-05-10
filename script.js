@@ -7,11 +7,11 @@ const mensajes = {
   },
   "abrazo": "Tus abrazos son el hogar donde siempre quiero volver.",
   "destino": "Eras mi destino incluso antes de conocerte.",
-  "regalo": {
+  "regalos": {
     texto: "Aquí tienes un regalo especial, solo para ti.",
     archivo: "archivo-sorpresa.png"
   },
-  "sorpresa": {
+  "wikipedia": {
     texto: "Haz clic en el enlace para ver tu sorpresa...",
     link: "https://es.m.wikipedia.org/wiki/Lilit"
   }
@@ -49,12 +49,12 @@ function checkCode() {
       }
 
       if (data.archivo) {
-        const link = document.createElement("a");
-        link.href = data.archivo;
-        link.download = data.archivo;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        const a = document.createElement("a");
+        a.href = data.archivo;
+        a.download = data.archivo;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
       }
     }
 
@@ -70,3 +70,25 @@ function checkCode() {
   input.value = "";
   actualizarProgreso();
 }
+
+function actualizarProgreso() {
+  const progreso = document.getElementById("progreso");
+  const total = Object.keys(mensajes).length;
+  const desbloqueados = JSON.parse(localStorage.getItem("desbloqueados") || "[]");
+  if (progreso) {
+    progreso.textContent = `Has desbloqueado ${desbloqueados.length} de ${total} mensajes secretos.`;
+  }
+}
+
+// Reproducir música tras la primera interacción del usuario
+window.addEventListener("click", () => {
+  const music = document.getElementById("bgMusic");
+  if (music && music.paused) {
+    music.play().catch(() => {});
+  }
+}, { once: true });
+
+// Actualizar progreso al cargar
+window.addEventListener("load", () => {
+  actualizarProgreso();
+});
