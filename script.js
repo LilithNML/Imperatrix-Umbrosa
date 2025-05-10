@@ -6,7 +6,15 @@ const mensajes = {
     video: "https://www.youtube.com/embed/kXYiU_JCYtU"
   },
   "abrazo": "Tus abrazos son el hogar donde siempre quiero volver.",
-  "destino": "Eras mi destino incluso antes de conocerte."
+  "destino": "Eras mi destino incluso antes de conocerte.",
+  "regalo": {
+    texto: "Aquí tienes un regalo especial, solo para ti.",
+    archivo: "regalo.pdf"
+  },
+  "sorpresa": {
+    texto: "Haz clic en el enlace para ver tu sorpresa...",
+    link: "https://example.com/sorpresa.html"
+  }
 };
 
 function checkCode() {
@@ -30,8 +38,24 @@ function checkCode() {
     if (typeof data === 'string') {
       html = `<p>${data}</p>`;
     } else if (typeof data === 'object') {
-      html = `<p>${data.texto}</p>`;
-      window.open(data.video, "_blank"); // Abre el video en nueva pestaña
+      html = `<p>${data.texto || ''}</p>`;
+
+      if (data.video) {
+        window.open(data.video, "_blank");
+      }
+
+      if (data.link) {
+        window.open(data.link, "_blank");
+      }
+
+      if (data.archivo) {
+        const link = document.createElement("a");
+        link.href = data.archivo;
+        link.download = data.archivo;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
     }
 
     contenido.innerHTML = html;
@@ -46,20 +70,3 @@ function checkCode() {
   input.value = "";
   actualizarProgreso();
 }
-
-function actualizarProgreso() {
-  const total = Object.keys(mensajes).length;
-  const desbloqueados = JSON.parse(localStorage.getItem("desbloqueados") || "[]");
-  const progreso = document.getElementById("progreso");
-
-  progreso.textContent = `Has desbloqueado ${desbloqueados.length} de ${total} mensajes secretos.`;
-}
-
-window.addEventListener("load", actualizarProgreso);
-
-window.addEventListener("click", () => {
-  const music = document.getElementById("bgMusic");
-  if (music.paused) {
-    music.play().catch(() => {});
-  }
-}, { once: true });
