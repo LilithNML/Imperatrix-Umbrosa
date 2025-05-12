@@ -1,6 +1,6 @@
 const mensajes = {
   "0011": "Cada amanecer contigo es un regalo que jamás imaginé merecer.",
-  "teamo": "No hay un solo día en que no te ame más que el anterior.",
+  "tequiero": "No hay un solo día en que no te ame más que el anterior.",
   "cancion": {
     texto: "Nuestra canción favorita siempre me hace pensar en ti.",
     video: "https://www.youtube.com/embed/kXYiU_JCYtU"
@@ -29,9 +29,18 @@ const mensajes = {
   }
 };
 
+// Elimina acentos, espacios y convierte a minúsculas
+function normalizarTexto(texto) {
+  return texto
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "")
+    .toLowerCase();
+}
+
 function checkCode() {
   const input = document.getElementById("codeInput");
-  const code = input.value.replace(/\s+/g, "").toLowerCase();
+  const code = normalizarTexto(input.value);
   const contenido = document.getElementById("contenido");
   const correctSound = document.getElementById("correctSound");
   const incorrectSound = document.getElementById("incorrectSound");
@@ -96,7 +105,6 @@ function actualizarProgreso() {
   }
 }
 
-// Reproducir música tras la primera interacción del usuario
 window.addEventListener("click", () => {
   const music = document.getElementById("bgMusic");
   if (music && music.paused) {
@@ -104,7 +112,6 @@ window.addEventListener("click", () => {
   }
 }, { once: true });
 
-// Actualizar progreso al cargar
 window.addEventListener("load", () => {
   actualizarProgreso();
 });
