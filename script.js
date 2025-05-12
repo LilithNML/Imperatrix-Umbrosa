@@ -6,6 +6,10 @@ const mensajes = {
     video: "https://www.youtube.com/embed/kXYiU_JCYtU"
   },
   "abrazo": "Tus abrazos son el hogar donde siempre quiero volver.",
+  "fotoespecial": {
+  texto: "Esta imagen siempre me recuerda a ti.",
+  imagen: "archivo-sorpresa.png"
+  }
   "destino": "Eras mi destino incluso antes de conocerte.",
   "regalos": {
     texto: "Aquí tienes un regalo especial, solo para ti.",
@@ -26,6 +30,10 @@ function checkCode() {
 
   if (mensajes.hasOwnProperty(code)) {
     let desbloqueados = JSON.parse(localStorage.getItem("desbloqueados") || "[]");
+
+    if (data.imagen) {
+  mostrarImagenModal(data.imagen);
+    }
 
     if (!desbloqueados.includes(code)) {
       desbloqueados.push(code);
