@@ -19,7 +19,7 @@ const mensajes = {
 
 function checkCode() {
   const input = document.getElementById("codeInput");
-  const code = input.value.trim().toLowerCase();
+  const code = input.value.replace(/\s+/g, "").toLowerCase();
   const contenido = document.getElementById("contenido");
   const correctSound = document.getElementById("correctSound");
   const incorrectSound = document.getElementById("incorrectSound");
