@@ -7,9 +7,9 @@ const mensajes = {
   },
   "abrazo": "Tus abrazos son el hogar donde siempre quiero volver.",
   "fotoespecial": {
-  texto: "Esta imagen siempre me recuerda a ti.",
-  imagen: "archivo-sorpresa.png"
-  }
+    texto: "Esta imagen siempre me recuerda a ti.",
+    imagen: "archivo-sorpresa.png"
+  },
   "destino": "Eras mi destino incluso antes de conocerte.",
   "regalos": {
     texto: "Aquí tienes un regalo especial, solo para ti.",
@@ -29,18 +29,14 @@ function checkCode() {
   const incorrectSound = document.getElementById("incorrectSound");
 
   if (mensajes.hasOwnProperty(code)) {
+    const data = mensajes[code];
     let desbloqueados = JSON.parse(localStorage.getItem("desbloqueados") || "[]");
-
-    if (data.imagen) {
-  mostrarImagenModal(data.imagen);
-    }
 
     if (!desbloqueados.includes(code)) {
       desbloqueados.push(code);
       localStorage.setItem("desbloqueados", JSON.stringify(desbloqueados));
     }
 
-    const data = mensajes[code];
     let html = '';
 
     if (typeof data === 'string') {
@@ -63,6 +59,10 @@ function checkCode() {
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
+      }
+
+      if (data.imagen) {
+        mostrarImagenModal(data.imagen);
       }
     }
 
