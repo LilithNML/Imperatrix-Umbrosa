@@ -10,6 +10,14 @@ const mensajes = {
     texto: "Esta imagen siempre me recuerda a ti.",
     imagen: "archivo-sorpresa.png"
   },
+  "foto": {
+    texto: "Esta imagen siempre me recuerda a ti.",
+    imagen: "Imagen de prueba.jpg"
+  },
+  "fotohorizontal": {
+    texto: "Esta imagen siempre me recuerda a ti.",
+    imagen: "1000150104.jpg"
+  },
   "destino": "Eras mi destino incluso antes de conocerte.",
   "regalos": {
     texto: "Aquí tienes un regalo especial, solo para ti.",
