@@ -113,6 +113,13 @@ window.addEventListener("click", () => {
 }, { once: true });
 
 window.addEventListener("load", () => {
+  // Permitir que Enter también desbloquee el código
+document.getElementById("codeInput").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault(); // Evita que recargue la página o haga otra acción por defecto
+    checkCode(); // Llama a la función para verificar el código
+  }
+});
   actualizarProgreso();
 });
 
