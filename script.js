@@ -16,7 +16,7 @@ const mensajes = {
   },
   "fotohorizontal": {
     texto: "Esta imagen siempre me recuerda a ti.",
-    imagen: "1000150104.jpg"
+    imagen: "prueba_de_formato.webp"
   },
   "destino": "Eras mi destino incluso antes de conocerte.",
   "regalos": {
