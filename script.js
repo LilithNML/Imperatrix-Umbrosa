@@ -25,7 +25,7 @@ const mensajes = {
   },
   "wikipedia": {
     texto: "Haz clic en el enlace para ver tu sorpresa...",
-    link: "https://es.m.wikipedia.org/wiki/Lilit"
+    link: "https://lilithnml.github.io/Cofre/"
   }
 };
 
