@@ -23,9 +23,8 @@ const mensajes = {
     texto: "Aquí tienes un regalo especial, solo para ti.",
     archivo: "archivo-sorpresa.png"
   },
-  "wikipedia": {
-    texto: "Haz clic en el enlace para ver tu sorpresa...",
-    link: "https://lilithnml.github.io/Cofre/"
+  "colicos": {
+    link: "https://www.google.com/search?q=kit+anticolicos"
   }
 };
 
