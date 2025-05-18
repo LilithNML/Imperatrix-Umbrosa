@@ -23,7 +23,7 @@ const mensajes = {
     texto: "Aquí tienes un regalo especial, solo para ti.",
     archivo: "archivo-sorpresa.png"
   },
-  "wikipedia": {
+  "wiki": {
     texto: "Haz clic en el enlace para ver tu sorpresa...",
     link: "https://es.m.wikipedia.org/wiki/Lilit"
   },
