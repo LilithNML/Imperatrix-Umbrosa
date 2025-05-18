@@ -50,7 +50,7 @@ function checkCode() {
   const bgMusic = document.getElementById("bgMusic");
   const codeAudio = document.getElementById("codeAudio");
 
-  // Si ya hay un audio de código sonando, lo pausamos
+  // Pausar audio de código si está sonando
   if (codeAudio && !codeAudio.paused) {
     codeAudio.pause();
     codeAudio.currentTime = 0;
@@ -100,7 +100,8 @@ function checkCode() {
         }
 
         if (codeAudio) {
-          if (codeAudio.src !== location.origin + '/' + data.audio) {
+          // Verificamos que no sea el mismo audio ya cargado
+          if (!codeAudio.src.includes(data.audio)) {
             codeAudio.src = data.audio;
           }
           codeAudio.play().catch(() => {});
@@ -162,3 +163,14 @@ function mostrarImagenModal(src) {
 function cerrarModal() {
   document.getElementById("imageModal").style.display = "none";
 }
+
+document.addEventListener("visibilitychange", () => {
+  const bgMusic = document.getElementById("bgMusic");
+  const codeAudio = document.getElementById("codeAudio");
+
+  if (document.visibilityState === "visible") {
+    if (bgMusic && bgMusic.paused && codeAudio.paused) {
+      bgMusic.play().catch(() => {});
+    }
+  }
+});
