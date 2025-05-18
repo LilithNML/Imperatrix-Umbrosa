@@ -1,5 +1,5 @@
 const mensajes = {
-  "001100": "Cada amanecer contigo es un regalo que jamás imaginé merecer.",
+  "0011": "Cada amanecer contigo es un regalo que jamás imaginé merecer.",
   "tequiero": "No hay un solo día en que no te ame más que el anterior.",
   "cancion": {
     texto: "Nuestra canción favorita siempre me hace pensar en ti.",
@@ -16,19 +16,23 @@ const mensajes = {
   },
   "fotohorizontal": {
     texto: "Esta imagen siempre me recuerda a ti.",
-    imagen: "prueba_de_formato.webp"
+    imagen: "1000150104.jpg"
   },
   "destino": "Eras mi destino incluso antes de conocerte.",
   "regalos": {
     texto: "Aquí tienes un regalo especial, solo para ti.",
     archivo: "archivo-sorpresa.png"
   },
-  "colicos": {
-    link: "https://www.google.com/search?q=kit+anticolicos"
+  "wikipedia": {
+    texto: "Haz clic en el enlace para ver tu sorpresa...",
+    link: "https://es.m.wikipedia.org/wiki/Lilit"
+  },
+  "especial": {
+    texto: "Escucha esto, amor...",
+    audio: "audio-sorpresa.mp3"
   }
 };
 
-// Elimina acentos, espacios y convierte a minúsculas
 function normalizarTexto(texto) {
   return texto
     .normalize("NFD")
@@ -43,6 +47,15 @@ function checkCode() {
   const contenido = document.getElementById("contenido");
   const correctSound = document.getElementById("correctSound");
   const incorrectSound = document.getElementById("incorrectSound");
+  const bgMusic = document.getElementById("bgMusic");
+  const codeAudio = document.getElementById("codeAudio");
+
+  // Si ya hay un audio de código sonando, lo pausamos
+  if (codeAudio && !codeAudio.paused) {
+    codeAudio.pause();
+    codeAudio.currentTime = 0;
+    if (bgMusic && bgMusic.paused) bgMusic.play().catch(() => {});
+  }
 
   if (mensajes.hasOwnProperty(code)) {
     const data = mensajes[code];
@@ -80,6 +93,24 @@ function checkCode() {
       if (data.imagen) {
         mostrarImagenModal(data.imagen);
       }
+
+      if (data.audio) {
+        if (bgMusic && !bgMusic.paused) {
+          bgMusic.pause();
+        }
+
+        if (codeAudio) {
+          if (codeAudio.src !== location.origin + '/' + data.audio) {
+            codeAudio.src = data.audio;
+          }
+          codeAudio.play().catch(() => {});
+          codeAudio.onended = () => {
+            if (bgMusic && bgMusic.paused) {
+              bgMusic.play().catch(() => {});
+            }
+          };
+        }
+      }
     }
 
     contenido.innerHTML = html;
@@ -112,13 +143,12 @@ window.addEventListener("click", () => {
 }, { once: true });
 
 window.addEventListener("load", () => {
-  // Permitir que Enter también desbloquee el código
-document.getElementById("codeInput").addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    event.preventDefault(); // Evita que recargue la página o haga otra acción por defecto
-    checkCode(); // Llama a la función para verificar el código
-  }
-});
+  document.getElementById("codeInput").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      checkCode();
+    }
+  });
   actualizarProgreso();
 });
 
