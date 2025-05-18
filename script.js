@@ -28,7 +28,7 @@ const mensajes = {
     link: "https://es.m.wikipedia.org/wiki/Lilit"
   },
   "especial": {
-    texto: "Escucha esto, amor...",
+    imagen: "don_ramon_x_hatsune_miku.jpg",
     audio: "audio-sorpresa.mp3"
   }
 };
