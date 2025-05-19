@@ -8,7 +8,7 @@ const mensajes = {
   "abrazo": "Tus abrazos son el hogar donde siempre quiero volver.",
   "skirk": {
     texto: "Esta imagen siempre me recuerda a ti.",
-    imagen: "imagenes/__skirk_genshin_impact_drawn_by_jiu_fanglianhua__c2c2ab6c217767e33f02587ad4f52309.jpg"
+    imagen: "archivos/skirk_chibi.jpg"
   },
   "foto": {
     texto: "Esta imagen siempre me recuerda a ti.",
