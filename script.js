@@ -6,7 +6,7 @@ const mensajes = {
     video: "https://www.youtube.com/embed/kXYiU_JCYtU"
   },
   "abrazo": "Tus abrazos son el hogar donde siempre quiero volver.",
-  "fotoespecial": {
+  "skirk": {
     texto: "Esta imagen siempre me recuerda a ti.",
     imagen: "imagenes/__skirk_genshin_impact_drawn_by_jiu_fanglianhua__c2c2ab6c217767e33f02587ad4f52309.jpg"
   },
