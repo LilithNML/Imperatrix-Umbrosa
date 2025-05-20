@@ -1,36 +1,6 @@
 const mensajes = {
   "0011": "Cada amanecer contigo es un regalo que jamás imaginé merecer.",
-  "tequiero": "No hay un solo día en que no te ame más que el anterior.",
-  "cancion": {
-    texto: "Nuestra canción favorita siempre me hace pensar en ti.",
-    video: "https://www.youtube.com/embed/kXYiU_JCYtU"
-  },
-  "abrazo": "Tus abrazos son el hogar donde siempre quiero volver.",
-  "skirk": {
-    texto: "Esta imagen siempre me recuerda a ti.",
-    imagen: "archivos/skirk_chibi.jpg"
-  },
-  "foto": {
-    texto: "Esta imagen siempre me recuerda a ti.",
-    imagen: "Imagen de prueba.jpg"
-  },
-  "fotohorizontal": {
-    texto: "Esta imagen siempre me recuerda a ti.",
-    imagen: "1000150104.jpg"
-  },
-  "destino": "Eras mi destino incluso antes de conocerte.",
-  "regalos": {
-    texto: "Aquí tienes un regalo especial, solo para ti.",
-    archivo: "archivo-sorpresa.png"
-  },
-  "wiki": {
-    texto: "Haz clic en el enlace para ver tu sorpresa...",
-    link: "https://es.m.wikipedia.org/wiki/Lilit"
-  },
-  "especial": {
-    imagen: "don_ramon_x_hatsune_miku.jpg",
-    audio: "audio-sorpresa.mp3"
-  }
+  
 };
 
 function normalizarTexto(texto) {
