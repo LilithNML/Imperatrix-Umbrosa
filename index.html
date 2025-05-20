@@ -1,53 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Mantenimiento</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <style>
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #f4f7f6;
-            color: #333;
-            text-align: center;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sitio en Mantenimiento - Para Mi Amor</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-        .container {
-            background-color: #ffffff;
-            padding: 50px 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            width: 90%;
-        }
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #fceabb, #f8b500);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #4a3c1b;
+    text-align: center;
+  }
 
-        h1 {
-            color: #2c3e50;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
+  .container {
+    background: #fff9e6;
+    padding: 45px 35px;
+    border-radius: 20px;
+    max-width: 480px;
+    box-shadow: 0 12px 30px rgba(248, 181, 0, 0.5);
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+  }
 
-        p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 0; /* No hay margen inferior si es el último elemento */
-        }
-    </style>
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    color: #d17f00;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: #6b4e00;
+  }
+
+  p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin: 0;
+    color: #6b4e00;
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    .container {
+      padding: 30px 25px;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.1rem;
+    }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>¡Sitio en Mantenimiento!</h1>
-        <p>
-            Estoy realizando mejoras en el sitio. Agradezco tu paciencia mientras trabajo.
-            Volverá a estar en línea muy pronto.
-        </p>
-    </div>
+  <main class="container" role="main" aria-label="Mensaje de sitio en mantenimiento para mi novio">
+    <h1>Sitio en Mantenimiento</h1>
+    <p>
+      Estoy poniendo todo mi corazón en cada detalle para que todo sea perfecto para ti. Gracias por tu paciencia infinita y por el amor que me regalas cada día.
+    </p>
+  </main>
 </body>
 </html>
